@@ -24,4 +24,5 @@ app.use(
   })
 );
 
+// Export as default for Vercel
 export default app;
