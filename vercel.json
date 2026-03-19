@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "framework": "vite",
+  "buildCommand": "vite build",
+  "outputDirectory": "dist/public",
+  "rewrites": [
+    { "source": "/api/trpc/:path*", "destination": "/api/trpc/[trpc]" },
+    { "source": "/api/upload", "destination": "/api/upload" },
+    { "source": "/api/upload-multiple", "destination": "/api/upload-multiple" },
+    { "source": "/api/oauth/:path*", "destination": "/api/trpc/[trpc]" }
+  ],
+  "functions": {
+    "api/**/*.ts": {
+      "maxDuration": 30
+    }
+  }
+}
