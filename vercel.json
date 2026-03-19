@@ -3,6 +3,7 @@
   "framework": "vite",
   "buildCommand": "vite build",
   "outputDirectory": "dist/public",
+  "installCommand": "npm install --legacy-peer-deps",
   "rewrites": [
     { "source": "/api/trpc/:path*", "destination": "/api/trpc/[trpc]" },
     { "source": "/api/upload", "destination": "/api/upload" },
