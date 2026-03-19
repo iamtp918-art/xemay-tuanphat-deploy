@@ -1,14 +1,12 @@
 {
   "version": 2,
   "framework": "vite",
-  "buildCommand": "vite build && tsc --noEmit",
+  "buildCommand": "vite build",
   "outputDirectory": "dist/public",
-  "env": ["DATABASE_URL"],
+  "env": {
+    "DATABASE_URL": "@database_url"
+  },
   "installCommand": "npm install --legacy-peer-deps",
-  "routes": [
-    { "src": "^/api/(.*)", "dest": "/api/$1" },
-    { "src": "^/(?!api).*", "dest": "/index.html" }
-  ],
   "rewrites": [
     { "source": "/api/trpc/:path*", "destination": "/api/trpc/[trpc]" },
     { "source": "/api/upload", "destination": "/api/upload" },
