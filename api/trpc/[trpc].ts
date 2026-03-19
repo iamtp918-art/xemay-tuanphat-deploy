@@ -5,7 +5,6 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { appRouter } from "../../server/routers";
 import { createContext } from "../../server/_core/context";
 import uploadRouter from "../../server/uploadRouter";
-import { seedPolicies } from "../../server/seed-policies";
 
 const app = express();
 
@@ -25,20 +24,4 @@ app.use(
   })
 );
 
-// Seed policies on first request (lazy init)
-let seeded = false;
-const originalHandler = app;
-
-const handler = async (req: any, res: any) => {
-  if (!seeded) {
-    seeded = true;
-    try {
-      await seedPolicies();
-    } catch (e) {
-      console.error("[Seed] Policy seeding error:", e);
-    }
-  }
-  return originalHandler(req, res);
-};
-
-export default handler;
+export default app;
