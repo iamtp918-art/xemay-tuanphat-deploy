@@ -4,8 +4,14 @@
   "buildCommand": "vite build",
   "outputDirectory": "dist/public",
   "installCommand": "npm install --legacy-peer-deps",
+  "functions": {
+    "api/trpc/[trpc].ts": {
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.ts" },
+    { "source": "/api/:path*", "destination": "/api/trpc/[trpc]" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
